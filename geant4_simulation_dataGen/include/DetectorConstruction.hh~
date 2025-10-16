@@ -1,0 +1,106 @@
+
+#ifndef DetectorConstruction_H
+#define DetectorConstruction_H 1
+
+#include "globals.hh"
+#include "G4VUserDetectorConstruction.hh"
+#include "G4ThreeVector.hh"
+#include "G4RotationMatrix.hh"
+#include "G4VPhysicalVolume.hh"
+//#include "PhysicalConstants.h"
+//#include "SystemOfUnits.h"
+
+//#include <vector>
+
+class Fiber;
+class LightAbsorber;
+class CPID_info;
+class G4Box;
+class G4Tubs;
+class G4LogicalVolume;
+class G4VPhysicalVolume;
+class G4NistManager;
+class G4UserLimits;
+class G4VisAttributes;
+
+//---------------------------------------------------------------------------
+class DetectorConstruction : public G4VUserDetectorConstruction
+{
+public:
+  DetectorConstruction(G4double worldSize=0);
+  ~DetectorConstruction();
+  
+public:
+  virtual G4VPhysicalVolume* Construct();
+  G4double GetWorldFullLength()      {return fWorldLength;}
+  
+  const G4LogicalVolume* GetWorldLVolume()  const { return logicWorld;}
+  
+private:    
+  void ConstructMaterials();
+  void VisualizationAttributes();
+  void WriteCASTOR_LUT();
+
+  G4Box*             solidWorld;        // pointer to the solid envelope 
+  G4LogicalVolume*   logicWorld;        // pointer to the logical envelope
+  G4VPhysicalVolume* physiWorld;        // pointer to the physical envelope
+ 
+  G4Box*             solidPlastic;
+  G4LogicalVolume*   logicPlastic;
+  G4VPhysicalVolume* physiPlastic;
+
+  // G4Tubs*            solidSensor;
+  // G4LogicalVolume*   logicSensor;
+  // G4VPhysicalVolume* physiSensor;  
+
+  // G4Tubs*            solidInerTube;
+  // G4LogicalVolume*   logicInerTube;
+  // G4VPhysicalVolume* physiInerTube; 
+
+  G4Box*             solidDet;
+  G4LogicalVolume*   logicDet[96];
+  G4VPhysicalVolume* physiDet[96];
+
+  G4Box*             solidCrystal;
+  G4LogicalVolume*   logicCrystal;
+  G4VPhysicalVolume* physiCrystal[1369];
+
+  G4int MaxNumDetectors;
+  G4int numDetectorsPerRing;
+  G4int numRings;
+  G4int numCrystals1D;
+  G4double ringRadius;
+  
+  G4UserLimits*      stepLimit;         // adjusting max. step size for 
+                                        // more detailed simulation of 
+                                        // the energy deposition
+  
+  G4NistManager*     NISTManager;
+
+  G4VisAttributes* World_VisAtt;
+  G4VisAttributes* VisAttPlastic;
+  G4VisAttributes* VisAttSensor;
+  G4VisAttributes* VisAttInerTube;  
+
+  G4double           fWorldLength;      // Full length of the world volume 
+  G4double           field_size;
+  G4double           source_to_cpid_dist;
+  G4double           plastic_x;
+  G4double           plastic_y;
+  G4double           plastic_z;
+  // G4double           sensor_thickness;
+  // G4double           r_min;
+  // G4double           r_max;
+  // G4double           phi_min;
+  // G4double           phi_max;
+  // G4double           half_height;
+  G4double          crystal_to_crystal_gap;
+  G4double          det_w;
+  G4double          det_h;
+  G4double          crystal_w;
+  G4double          crystal_h;
+};
+
+
+//-----------------------------------------------------------------------------
+#endif

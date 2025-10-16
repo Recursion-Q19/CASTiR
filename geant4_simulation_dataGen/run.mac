@@ -1,0 +1,50 @@
+###########################################
+# Macro file for the initialization phase #
+###########################################
+
+#############################
+# Sets some default verbose #
+#############################
+/control/verbose 0
+/control/saveHistory
+/run/verbose 0
+/process/verbose 0
+
+###########
+# PHYSICS #
+###########
+/physic/addPhysics standard_opt4        # Electromagnetic model
+#/physic/addPhysics elastic              # Hadronic elastic model
+#/physic/addPhysics binary               # Hadronic inelastic model
+#/physic/addPhysics radioactive_decay    # Radioactive decay
+/physic/addPhysics optical_physics
+#=========================================
+#  experimental setup and run parameters
+#=========================================
+
+/process/eLoss/binsDEDX 480
+/process/eLoss/binsLambda 480
+
+/run/initialize
+
+##############################################
+# Set cut and the step max for the tracking. #
+# Suggested values of cut and step:          #
+##############################################
+
+/physic/setGCut 4.5 mm
+/physic/setPCut 0.16 mm
+/physic/setECut 0.16 mm
+#/physic/setCut 0.35 mm
+#/Step/StepLengthInDetector 0.35 mm 
+
+# /primaryGenerator/setFixedEnergyFlag false
+# /primaryGenerator/initializeEnergySpectrum ./energy_spectra/pinacle_6MV.txt
+# /userRun/setOutFileName ./test.root
+# /run/beamOn 100
+# /primaryGenerator/setEnergy 5.0 MeV
+
+/primaryGenerator/setFixedEnergyFlag false
+#/primaryGenerator/setEnergy 511.0 keV
+/userRun/setOutFileName ./test.root
+/run/beamOn 5
