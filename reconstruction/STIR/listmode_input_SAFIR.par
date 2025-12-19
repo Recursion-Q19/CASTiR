@@ -1,0 +1,5 @@
+CListModeDataSAFIR Parameters:=
+        listmode data filename:= test.clm.safir
+	crystal map filename:= MySTIR_Simulation_crystal_map.txt
+        template projection data filename:= MySTIR_Simulation.hs
+END CListModeDataSAFIR Parameters:=

@@ -1,0 +1,62 @@
+castor-recon() -> Launch reconstruction from CASToR version 3.2.
+==================================================================================================
+                                      COMMAND LINE CONTEXT
+==================================================================================================
+Command line: castor-recon -df test.cdh -opti MLEM -it 6:4 -proj joseph -conv gaussian,0.5,0.5,3::psf -dim 241,241,160 -vox 0.25,0.25,0.65 -dout CASToR 
+Working directory: /home/student/castor/Reconstruction/NEMA-NotInTheMiddle-Final
+Data of execution: Sat Mar  8 15:55:30 2025
+Float numbers precision in bytes (for matrices and some computations): 4
+Float numbers precision in bytes (for sensitive computations that require at least double precision): 8
+Float numbers precision in bytes (for datafile reading/writing): 4
+Float numbers precision in bytes (for scanner LUT reading/writing): 4
+CASToR version: 3.2
+==================================================================================================
+sScannerManager::Initialize() -> From scanner PET_URNIDDL_PHYTOPET73
+oProjectorManager::Initialize() -> Initialize projectors and projection lines
+----- Dynamic model: No parameters given - setting diagonal basis functions !
+oOptimizerManager::Initialize() -> Initialize optimizer and penalty
+oImageConvolverManager::Initialize() -> Initialize image convolvers
+oSensitivityGenerator::Launch() -> Start the sensitivity computation
+  --> Time spent for sensitivity generation | User: 928 sec | CPU: 9.2859534e+02 sec
+sChronoManager::Initialize() -> Initialize all duration counters for profiling
+vAlgorithm::IterateCPU() -> Start algorithm for 6 iterations
+vAlgorithm::IterateCPU() -> Start iteration 1/6 sub step 1/1 subset 1/4
+vAlgorithm::IterateCPU() -> Start iteration 1/6 sub step 1/1 subset 2/4
+vAlgorithm::IterateCPU() -> Start iteration 1/6 sub step 1/1 subset 3/4
+vAlgorithm::IterateCPU() -> Start iteration 1/6 sub step 1/1 subset 4/4
+iIterativeAlgorithm::StepAfterSubsetLoop() -> Save image at iteration 1
+vAlgorithm::IterateCPU() -> Start iteration 2/6 sub step 1/1 subset 1/4
+vAlgorithm::IterateCPU() -> Start iteration 2/6 sub step 1/1 subset 2/4
+vAlgorithm::IterateCPU() -> Start iteration 2/6 sub step 1/1 subset 3/4
+vAlgorithm::IterateCPU() -> Start iteration 2/6 sub step 1/1 subset 4/4
+iIterativeAlgorithm::StepAfterSubsetLoop() -> Save image at iteration 2
+vAlgorithm::IterateCPU() -> Start iteration 3/6 sub step 1/1 subset 1/4
+vAlgorithm::IterateCPU() -> Start iteration 3/6 sub step 1/1 subset 2/4
+vAlgorithm::IterateCPU() -> Start iteration 3/6 sub step 1/1 subset 3/4
+vAlgorithm::IterateCPU() -> Start iteration 3/6 sub step 1/1 subset 4/4
+iIterativeAlgorithm::StepAfterSubsetLoop() -> Save image at iteration 3
+vAlgorithm::IterateCPU() -> Start iteration 4/6 sub step 1/1 subset 1/4
+vAlgorithm::IterateCPU() -> Start iteration 4/6 sub step 1/1 subset 2/4
+vAlgorithm::IterateCPU() -> Start iteration 4/6 sub step 1/1 subset 3/4
+vAlgorithm::IterateCPU() -> Start iteration 4/6 sub step 1/1 subset 4/4
+iIterativeAlgorithm::StepAfterSubsetLoop() -> Save image at iteration 4
+vAlgorithm::IterateCPU() -> Start iteration 5/6 sub step 1/1 subset 1/4
+vAlgorithm::IterateCPU() -> Start iteration 5/6 sub step 1/1 subset 2/4
+vAlgorithm::IterateCPU() -> Start iteration 5/6 sub step 1/1 subset 3/4
+vAlgorithm::IterateCPU() -> Start iteration 5/6 sub step 1/1 subset 4/4
+iIterativeAlgorithm::StepAfterSubsetLoop() -> Save image at iteration 5
+vAlgorithm::IterateCPU() -> Start iteration 6/6 sub step 1/1 subset 1/4
+vAlgorithm::IterateCPU() -> Start iteration 6/6 sub step 1/1 subset 2/4
+vAlgorithm::IterateCPU() -> Start iteration 6/6 sub step 1/1 subset 3/4
+vAlgorithm::IterateCPU() -> Start iteration 6/6 sub step 1/1 subset 4/4
+iIterativeAlgorithm::StepAfterSubsetLoop() -> Save image at iteration 6
+vAlgorithm::IterateCPU() -> Total time spent | User: 19633 sec | CPU: 1.9631857e+04 sec
+sChronoManager::Display() -> Results from the profiling
+  --> Profiling of the data update step:
+    | Datafile management: 00 hours 02 mins 16 secs 795 ms
+    | Dynamic management: 00 hours 00 mins 55 secs 084 ms
+    | Projection management: 04 hours 00 mins 42 secs 091 ms
+    | Optimizer management: 01 hours 18 mins 02 secs 531 ms
+  --> Profiling of the convolution steps: 00 hours 01 mins 46 secs 702 ms
+  --> Custom update step 1: 00 hours 00 mins 00 secs 000 ms
+

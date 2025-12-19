@@ -1,0 +1,793 @@
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-122-generic x86_64)
+
+ System information as of Fri Mar  7 06:16:55 PM CST 2025
+
+  System load:    0.0                 Processes:                266
+  Usage of /home: 23.0% of 392.65GB   Users logged in:          0
+  Memory usage:   2%                  IPv4 address for enp6s18: 142.3.200.113
+  Swap usage:     0%
+
+#####################################################################
+
+Last login: Thu Mar  6 09:30:43 2025 from 142.3.1.57
+
+student@zst13:~$ cd STIR/STIR-Reconstruction/NEMA-NotInTheMiddle/
+student@zst13:~/STIR/STIR-Reconstruction/NEMA-NotInTheMiddle$ lm_to_projdata lm_to_projdata.par
+
+INFO: clistmodedatasafir parameters :=
+listmode data filename := test.clm.safir
+crystal map filename := MySTIR_Simulation_crystal_map.txt
+template projection data filename := MySTIR_Simulation.hs
+lor randomization (gaussian) sigma := 0
+end clistmodedatasafir parameters :=
+
+
+INFO: SAFIRCListmodeInputFileFormat: read_from_file(listmode_input_SAFIR.par)
+
+INFO: clistmodedatasafir parameters :=
+listmode data filename := test.clm.safir
+crystal map filename := MySTIR_Simulation_crystal_map.txt
+template projection data filename := MySTIR_Simulation.hs
+lor randomization (gaussian) sigma := 0
+end clistmodedatasafir parameters :=
+
+
+INFO: Interfile warning: I did not recognise the scanner from 'originating_system' (double_ring_prototype). Hopefully there is enough information present. I will check this now.
+
+WARNING: Scanner: maximum number of timing positions is not yet known. We can only handle non-TOF.
+
+INFO: Interfile parsing ended up with the following scanner:
+Scanner parameters:=
+  Scanner type := double_ring_prototype
+  Number of rings                          := 70
+  Number of detectors per ring             := 280
+  Inner ring diameter (cm)                 := 14.6
+  Average depth of interaction (cm)        := 1e-07
+  Distance between rings (cm)              := 0.13
+  Default bin size (cm)                    := 0.025
+  View offset (degrees)                    := 0
+  Maximum number of non-arc-corrected bins := 140
+  Default number of arc-corrected bins     := 0
+  Number of blocks per bucket in transaxial direction         := 1
+  Number of blocks per bucket in axial direction              := 2
+  Number of crystals per block in axial direction             := 35
+  Number of crystals per block in transaxial direction        := 35
+  Number of detector layers                                   := 1
+  Number of crystals per singles unit in axial direction      := 1
+  Number of crystals per singles unit in transaxial direction := 1
+  Name of crystal map                                         := MySTIR_Simulation_crystal_map.txt
+  Scanner geometry (BlocksOnCylindrical/Cylindrical/Generic)  := Generic
+  Distance between crystals in axial direction (cm)           := 0.13
+  Distance between crystals in transaxial direction (cm)      := 0.13
+  Distance between blocks in axial direction (cm)             := 6
+  Distance between blocks in transaxial direction (cm)        := 6
+End scanner parameters:=
+
+
+
+INFO: CListModeDataSAFIR: opening file "test.clm.safir"
+
+INFO: Interfile warning: I did not recognise the scanner from 'originating_system' (double_ring_prototype). Hopefully there is enough information present. I will check this now.
+
+WARNING: Scanner: maximum number of timing positions is not yet known. We can only handle non-TOF.
+
+INFO: Interfile parsing ended up with the following scanner:
+Scanner parameters:=
+  Scanner type := double_ring_prototype
+  Number of rings                          := 70
+  Number of detectors per ring             := 280
+  Inner ring diameter (cm)                 := 14.6
+  Average depth of interaction (cm)        := 1e-07
+  Distance between rings (cm)              := 0.13
+  Default bin size (cm)                    := 0.025
+  View offset (degrees)                    := 0
+  Maximum number of non-arc-corrected bins := 140
+  Default number of arc-corrected bins     := 0
+  Number of blocks per bucket in transaxial direction         := 1
+  Number of blocks per bucket in axial direction              := 2
+  Number of crystals per block in axial direction             := 35
+  Number of crystals per block in transaxial direction        := 35
+  Number of detector layers                                   := 1
+  Number of crystals per singles unit in axial direction      := 1
+  Number of crystals per singles unit in transaxial direction := 1
+  Name of crystal map                                         := MySTIR_Simulation_crystal_map.txt
+  Scanner geometry (BlocksOnCylindrical/Cylindrical/Generic)  := Generic
+  Distance between crystals in axial direction (cm)           := 0.13
+  Distance between crystals in transaxial direction (cm)      := 0.13
+  Distance between blocks in axial direction (cm)             := 6
+  Distance between blocks in transaxial direction (cm)        := 6
+End scanner parameters:=
+
+
+LmToProjData NOT Using FRAME_BASED_DT_CORR
+lm to projdata parameters :=
+input file := listmode_input_SAFIR.par
+template projdata := MySTIR_Simulation.hs
+frame definition file :=
+num events to store := 1000000000
+output filename prefix := MySTIR_Simulation
+bin normalisation type for pre-normalisation := None
+
+bin normalisation type for post-normalisation := None
+
+maximum absolute segment number to process := 69
+do pre normalisation := 0
+num tof bins in memory := 1
+num segments in memory := 139
+store prompts := 1
+store delayeds := 0
+list event coordinates := 0
+end :=
+
+Processing time frame 1
+201500000 events stored
+Number of prompts stored in this time period : 201568729
+Number of delayeds stored in this time period: 0
+Last stored event was recorded before time-tick at 0 secs
+Early stop due to EOF.
+Total number of counts (either prompts/trues/delayeds) stored: 201568729
+
+This took 293.11s CPU time.
+student@zst13:~/STIR/STIR-Reconstruction/NEMA-NotInTheMiddle$ OSMAPOSL MySimulation_OSMAPOSL.par
+
+INFO: Interfile warning: I did not recognise the scanner from 'originating_system' (double_ring_prototype). Hopefully there is enough information present. I will check this now.
+
+WARNING: Scanner: maximum number of timing positions is not yet known. We can only handle non-TOF.
+
+INFO: Interfile parsing ended up with the following scanner:
+Scanner parameters:=
+  Scanner type := double_ring_prototype
+  Number of rings                          := 70
+  Number of detectors per ring             := 280
+  Inner ring diameter (cm)                 := 14.6
+  Average depth of interaction (cm)        := 1e-07
+  Distance between rings (cm)              := 0.13
+  Default bin size (cm)                    := 0.025
+  View offset (degrees)                    := 0
+  Maximum number of non-arc-corrected bins := 140
+  Default number of arc-corrected bins     := 0
+  Number of blocks per bucket in transaxial direction         := 1
+  Number of blocks per bucket in axial direction              := 2
+  Number of crystals per block in axial direction             := 35
+  Number of crystals per block in transaxial direction        := 35
+  Number of detector layers                                   := 1
+  Number of crystals per singles unit in axial direction      := 1
+  Number of crystals per singles unit in transaxial direction := 1
+  Name of crystal map                                         := MySTIR_Simulation_crystal_map.txt
+  Scanner geometry (BlocksOnCylindrical/Cylindrical/Generic)  := Generic
+  Distance between crystals in axial direction (cm)           := 0.13
+  Distance between crystals in transaxial direction (cm)      := 0.13
+  Distance between blocks in axial direction (cm)             := 6
+  Distance between blocks in transaxial direction (cm)        := 6
+End scanner parameters:=
+
+
+
+INFO: osmaposlparameters :=
+output filename prefix := out_file
+output file format type := Interfile
+interfile output file format parameters :=
+byte order := LITTLEENDIAN
+number format := float
+number of bytes per pixel := 4
+scale to write data := 0
+end interfile output file format parameters :=
+
+post-filter type := None
+disable output := 0
+verbosity := -1
+objective function type := PoissonLogLikelihoodWithLinearModelForMeanAndProjData
+poissonloglikelihoodwithlinearmodelformeanandprojdata parameters :=
+prior type := None
+sensitivity filename := sens.hv
+subset sensitivity filenames :=
+recompute sensitivity := 1
+use subset sensitivities := 0
+use time-of-flight sensitivities := 0
+input file := MySTIR_Simulation_f1g1d0b0.hs
+maximum absolute segment number to process := 69
+zero end planes of segment 0 := 1
+zoom := 1
+z zoom := 1
+xy output image size (in pixels) := 241
+z output image size (in pixels) := 160
+z offset (in mm) := 0
+projector pair type := Separate Projectors
+projector pair using separate projectors parameters :=
+forward projector type := Matrix
+forward projector using matrix parameters :=
+forward projector parameters :=
+matrix type := Ray Tracing
+ray tracing matrix parameters :=
+disable caching := 1
+store only basic bins in cache := 1
+restrict to cylindrical fov := 0
+number of rays in tangential direction to trace for each bin := 30
+use actual detector boundaries := 0
+do symmetry 90degrees min phi := 0
+do symmetry 180degrees min phi := 0
+do symmetry swap segment := 0
+do symmetry swap s := 0
+do symmetry shift z := 0
+end ray tracing matrix parameters :=
+
+pre data processor := Separable Gaussian
+separable gaussian filter parameters :=
+x-dir filter fwhm (in mm) := 0.5
+y-dir filter fwhm (in mm) := 0.5
+z-dir filter fwhm (in mm) := 0.5
+x-dir maximum kernel size := 3
+y-dir maximum kernel size := 3
+z-dir maximum kernel size := 3
+normalise filter to 1 := 1
+end separable gaussian filter parameters :=
+
+end forward projector using matrix parameters :=
+end forward projector parameters :=
+
+back projector type := Matrix
+back projector using matrix parameters :=
+back projector parameters :=
+matrix type := Ray Tracing
+ray tracing matrix parameters :=
+disable caching := 1
+store only basic bins in cache := 1
+restrict to cylindrical fov := 0
+number of rays in tangential direction to trace for each bin := 30
+use actual detector boundaries := 0
+do symmetry 90degrees min phi := 0
+do symmetry 180degrees min phi := 0
+do symmetry swap segment := 0
+do symmetry swap s := 0
+do symmetry shift z := 0
+end ray tracing matrix parameters :=
+
+post data processor := Separable Gaussian
+separable gaussian filter parameters :=
+x-dir filter fwhm (in mm) := 0.5
+y-dir filter fwhm (in mm) := 0.5
+z-dir filter fwhm (in mm) := 0.5
+x-dir maximum kernel size := 3
+y-dir maximum kernel size := 3
+z-dir maximum kernel size := 3
+normalise filter to 1 := 1
+end separable gaussian filter parameters :=
+
+end back projector using matrix parameters :=
+end back projector parameters :=
+
+end projector pair using separate projectors parameters :=
+
+additive sinogram := 0
+time frame definition filename :=
+time frame number := 1
+bin normalisation type := None
+
+end poissonloglikelihoodwithlinearmodelformeanandprojdata parameters :=
+
+number of subiterations := 24
+start at subiteration number := 1
+save estimates at subiteration intervals := 1
+initial estimate := 1
+number of subsets := 4
+start at subset := 0
+uniformly randomise subset order := 0
+inter-iteration filter subiteration interval := 0
+inter-iteration filter type := None
+report objective function values interval := 0
+enforce initial positivity condition := 1
+inter-update filter subiteration interval := 0
+inter-update filter type := None
+map model := additive
+maximum relative change := 3.40282e+38
+minimum relative change := 0.01
+write update image := 0
+end :=
+end osmaposlparameters :=
+
+
+INFO: Determined voxel size by dividing default_bin_size (0.25) by zoom
+
+INFO: Computing sensitivity
+
+INFO: Using distributable_computation with 16 threads on 18 processors.
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 0
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 20349.7s, wall-clock 1272.72s
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 0
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 20620.5s, wall-clock 1289.5s
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 0
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 20356.5s, wall-clock 1272.93s
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 0
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 20343.5s, wall-clock 1272.14s
+
+INFO: Done computing sensitivity
+
+INFO: This took 81670.889999999999 seconds CPU time.
+
+INFO: Writing sensitivity to 'sens.hv'
+
+INFO: Now processing subset #: 0
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1441272
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40480.1s, wall-clock 2531.01s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: OSEM subiteration #1 completed
+  min and max in current estimate 8.28067e-06 0.261711
+
+
+INFO: Now processing subset #: 1
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1425546
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 41031.1s, wall-clock 2565.55s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0708631, 4.27833, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #2 completed
+  min and max in current estimate 4.78866e-06 0.611516
+
+
+INFO: Now processing subset #: 2
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1440306
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40505.1s, wall-clock 2532.63s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0256402, 7.76693, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #3 completed
+  min and max in current estimate 5.90858e-07 0.845927
+
+
+INFO: Now processing subset #: 3
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1431260
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40481.7s, wall-clock 2531.08s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0371866, 3.21584, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #4 completed
+  min and max in current estimate 7.2724e-07 1.15108
+
+
+INFO: Now processing subset #: 0
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1441272
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40485.7s, wall-clock 2531.41s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0364456, 2.97658, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #5 completed
+  min and max in current estimate 8.89482e-08 1.2302
+
+
+INFO: Now processing subset #: 1
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1425546
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 41038.1s, wall-clock 2565.99s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0618046, 3.21418, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #6 completed
+  min and max in current estimate 4.86719e-08 1.50176
+
+
+INFO: Now processing subset #: 2
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1440306
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40494.2s, wall-clock 2531.98s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0257494, 3.8347, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #7 completed
+  min and max in current estimate 2.19975e-09 1.53287
+
+
+INFO: Now processing subset #: 3
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1431260
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40495.1s, wall-clock 2531.97s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0341718, 2.83462, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #8 completed
+  min and max in current estimate 2.54506e-09 1.80336
+
+
+INFO: Now processing subset #: 0
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1441272
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40489s, wall-clock 2531.56s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.033004, 2.93762, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #9 completed
+  min and max in current estimate 6.41728e-10 1.85249
+
+
+INFO: Now processing subset #: 1
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1425546
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 41030.3s, wall-clock 2565.44s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0609574, 3.26621, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #10 completed
+  min and max in current estimate 2.7026e-10 2.03342
+
+
+INFO: Now processing subset #: 2
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1440306
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40501.3s, wall-clock 2532.35s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.025182, 3.17041, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #11 completed
+  min and max in current estimate 6.80569e-12 1.97789
+
+
+INFO: Now processing subset #: 3
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1431260
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40495s, wall-clock 2532.08s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0334214, 2.62984, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #12 completed
+  min and max in current estimate 7.3786e-12 2.20723
+
+
+INFO: Now processing subset #: 0
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1441272
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40483.8s, wall-clock 2531.32s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0307, 2.89152, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #13 completed
+  min and max in current estimate 2.17126e-12 2.24809
+
+
+INFO: Now processing subset #: 1
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1425546
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 41033.9s, wall-clock 2565.63s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0619226, 3.13492, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #14 completed
+  min and max in current estimate 7.27002e-13 2.37161
+
+
+INFO: Now processing subset #: 2
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1440306
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40484.7s, wall-clock 2531.31s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0247445, 2.90895, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #15 completed
+  min and max in current estimate 1.79893e-14 2.2803
+
+
+INFO: Now processing subset #: 3
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1431260
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40478.5s, wall-clock 2530.9s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0331243, 2.65264, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #16 completed
+  min and max in current estimate 1.85618e-14 2.48628
+
+
+INFO: Now processing subset #: 0
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1441272
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40476.4s, wall-clock 2530.81s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0294151, 2.84292, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #17 completed
+  min and max in current estimate 5.32948e-15 2.52219
+
+
+INFO: Now processing subset #: 1
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1425546
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 41027.6s, wall-clock 2565.33s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0632426, 3.00285, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #18 completed
+  min and max in current estimate 1.7449e-15 2.60955
+
+
+INFO: Now processing subset #: 2
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1440306
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40501.8s, wall-clock 2532.38s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0244984, 2.77706, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #19 completed
+  min and max in current estimate 4.27474e-17 2.50612
+
+
+INFO: Now processing subset #: 3
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1431260
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40501.9s, wall-clock 2532.36s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0329886, 2.69187, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #20 completed
+  min and max in current estimate 4.2507e-17 2.69457
+
+
+INFO: Now processing subset #: 0
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1441272
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40486.8s, wall-clock 2531.43s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0287071, 2.80112, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #21 completed
+  min and max in current estimate 1.19873e-17 2.72429
+
+
+INFO: Now processing subset #: 1
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1425546
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 41029.8s, wall-clock 2565.39s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0635386, 2.89934, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #22 completed
+  min and max in current estimate 3.87502e-18 2.78675
+
+
+INFO: Now processing subset #: 2
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1440306
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40501.8s, wall-clock 2532.37s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0244005, 2.71065, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #23 completed
+  min and max in current estimate 9.45523e-20 2.68297
+
+
+INFO: Now processing subset #: 3
+
+INFO: End-planes of segment 0 will be zeroed
+
+INFO: Starting loop with 16 threads
+
+INFO: Number of (cancelled) singularities: 1431260
+Number of (cancelled) negative numerators: 0
+
+INFO: Computation times for distributable_computation, CPU 40503.6s, wall-clock 2532.51s
+
+INFO: Number of (cancelled) singularities in Sensitivity division: 0
+
+INFO: Update image old min,max: 0.0329207, 2.73094, new min,max 0.01, 3.40282e+38
+
+INFO: OSEM subiteration #24 completed
+  min and max in current estimate 9.1478e-20 2.85638
+
+
+INFO: Total CPU Time 1056713.050000secs
+Total Wall clock time: 66080.4 seconds
+student@zst13:~/STIR/STIR-Reconstruction/NEMA-NotInTheMiddle$

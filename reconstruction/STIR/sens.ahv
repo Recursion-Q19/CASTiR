@@ -1,0 +1,18 @@
+!INTERFILE  :=
+!name of data file := sens.v
+!total number of images := 160
+!data offset in bytes := 0
+!imagedata byte order := LITTLEENDIAN
+!number format := short float
+!number of bytes per pixel := 4
+matrix axis label [1] := x
+!matrix size [1] := 241
+scaling factor (mm/pixel) [1] := 0.25
+matrix axis label [2] := y
+!matrix size [2] := 241
+scaling factor (mm/pixel) [2] := 0.25
+;Correct value is of keyword (commented out)
+;!slice thickness (pixels) := 2.6
+;Value for Analyze
+!slice thickness (pixels) := 0.65
+!END OF INTERFILE :=

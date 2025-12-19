@@ -1,0 +1,55 @@
+!INTERFILE := 
+!imaging modality := PET
+!version of keys := CASToRv3.2
+CASToR version := 3.2
+
+!GENERAL DATA := 
+!originating system := PET_URNIDDL_PHYTOPET73
+!data offset in bytes := 0
+!name of data file := CASToR_it6.img
+patient name := CASToR_it6
+
+!GENERAL IMAGE DATA 
+!type of data := Dynamic
+!total number of images := 160
+imagedata byte order := LITTLEENDIAN
+!number of frame groups :=1 
+process status := 
+
+!STATIC STUDY (General) :=
+number of dimensions := 3
+!matrix size [1] := 241
+!matrix size [2] := 241
+!matrix size [3] := 160
+!number format := short float
+!number of bytes per pixel := 4
+scaling factor (mm/pixel) [1] := 0.25
+scaling factor (mm/pixel) [2] := 0.25
+scaling factor (mm/pixel) [3] := 0.65
+first pixel offset (mm) [1] := 0
+first pixel offset (mm) [2] := 0
+first pixel offset (mm) [3] := 0
+data rescale offset := 0
+data rescale slope := 1
+quantification units := 1
+!number of images in this frame group := 160
+!image duration (sec) := 6
+!image start time (sec) := 0
+pause between frame groups (sec) := 0
+!END OF INTERFILE := 
+
+!COPY OF INPUT HEADER 1
+Data filename: test.cdf
+Number of events: 215734818
+Data mode: list-mode
+Data type: PET
+Start time (s): 0
+Duration (s):  6
+Scanner name: PET_URNIDDL_PHYTOPET73
+Maximum number of lines per event: 1
+Maximum axial difference mm: 120
+Attenuation correction flag: 0
+Normalization correction flag: 0
+Scatter correction flag: 0
+Random correction flag: 0
+!END OF COPY OF INPUT HEADER 1

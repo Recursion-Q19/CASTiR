@@ -1,0 +1,121 @@
+OSMAPOSLParameters :=
+output filename prefix := out_file
+output file format type := Interfile
+interfile output file format parameters :=
+byte order := LITTLEENDIAN
+number format := float
+number of bytes per pixel := 4
+scale to write data := 0
+end interfile output file format parameters := 
+
+post-filter type := None
+disable output := 0
+verbosity := -1
+objective function type := PoissonLogLikelihoodWithLinearModelForMeanAndProjData
+poissonloglikelihoodwithlinearmodelformeanandprojdata parameters :=
+prior type := None
+sensitivity filename := sens.hv
+subset sensitivity filenames := 
+recompute sensitivity := 1
+use subset sensitivities := 0
+use time-of-flight sensitivities := 0
+input file := MySTIR_Simulation_f1g1d0b0.hs
+maximum absolute segment number to process := 69
+zero end planes of segment 0 := 1
+zoom := 1
+z zoom := 1 
+xy output image size (in pixels) := 241
+z output image size (in pixels) := 160
+z offset (in mm) := 0
+projector pair type := Separate Projectors
+projector pair using separate projectors parameters :=
+forward projector type := Matrix
+forward projector using matrix parameters :=
+forward projector parameters :=
+matrix type := Ray Tracing
+ray tracing matrix parameters :=
+disable caching := 1
+store only basic bins in cache := 1
+restrict to cylindrical fov := 0
+number of rays in tangential direction to trace for each bin := 30
+use actual detector boundaries := 0
+do symmetry 90degrees min phi := 0
+do symmetry 180degrees min phi := 0
+do symmetry swap segment := 0
+do symmetry swap s := 0
+do symmetry shift z := 0
+end ray tracing matrix parameters := 
+
+pre data processor := Separable Gaussian
+  separable gaussian filter parameters :=
+	x-dir filter fwhm (in mm) := 0.5
+	y-dir filter fwhm (in mm) := 0.5
+	z-dir filter fwhm (in mm) := 0.5
+
+	x-dir maximum kernel size := 3
+	y-dir maximum kernel size := 3
+	z-dir maximum kernel size := 3
+	Normalise filter to 1 := 1
+  end separable gaussian filter parameters :=
+
+end forward projector using matrix parameters := 
+;end forward projector parameters := 
+
+back projector type := Matrix
+back projector using matrix parameters :=
+back projector parameters :=
+matrix type := Ray Tracing
+ray tracing matrix parameters :=
+disable caching := 1
+store only basic bins in cache := 1
+restrict to cylindrical fov := 0
+number of rays in tangential direction to trace for each bin := 30
+use actual detector boundaries := 0
+do symmetry 90degrees min phi := 0
+do symmetry 180degrees min phi := 0
+do symmetry swap segment := 0
+do symmetry swap s := 0
+do symmetry shift z := 0
+end ray tracing matrix parameters := 
+
+post data processor := Separable Gaussian
+  separable gaussian filter parameters :=
+	x-dir filter fwhm (in mm) := 0.5
+	y-dir filter fwhm (in mm) := 0.5
+	z-dir filter fwhm (in mm) := 0.5
+
+	x-dir maximum kernel size := 3
+	y-dir maximum kernel size := 3
+	z-dir maximum kernel size := 3
+	Normalise filter to 1 := 1
+  end separable gaussian filter parameters :=
+end back projector using matrix parameters := 
+;end back projector parameters := 
+
+end projector pair using separate projectors parameters := 
+
+additive sinogram := 0
+time frame definition filename := 
+time frame number := 1
+;bin normalisation type := None
+
+end poissonloglikelihoodwithlinearmodelformeanandprojdata parameters := 
+
+number of subiterations := 24
+start at subiteration number := 1
+save estimates at subiteration intervals := 1
+initial estimate := 1
+number of subsets := 4
+start at subset := 0
+uniformly randomise subset order := 0
+inter-iteration filter subiteration interval := 0
+inter-iteration filter type := None
+report objective function values interval := 0
+enforce initial positivity condition := 1
+inter-update filter subiteration interval := 0
+inter-update filter type := None
+map model := additive
+maximum relative change := 3.40282e+38
+minimum relative change := 0.01
+write update image := 0
+end := 
