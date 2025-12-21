@@ -1,0 +1,18 @@
+scanner name:    PET_URNIDDL_PHYTOPET
+modality:    PET
+description: This scanner description is for Seyyed's experiment.
+scanner radius:    73.0
+number of rings in scanner:    70
+number of elements:    19600
+number of layers:    1
+number of crystals in layer(s):    19600
+crystals size depth:    13.0
+crystals size transaxial:    1.2
+crystals size axial:    1.2
+layers material:    LYSO
+voxels number transaxial:    128
+voxels number axial:    128
+field of view transaxial:    50
+field of view axial:    90
+min angle difference:    60 #deg
+mean depth of interaction:    0

@@ -43,11 +43,11 @@ This is an article reporting our results. This work have been accepted in the [S
 Some other repositories that are relevant and/or provide useful resources (this will be updated).
 
 <ol style="list-style-type: none;">
-	<li> STIR: [https://github.com/UCL/STIR](https://github.com/UCL/STIR) </li>
-	<li> CASToR: [https://castor-project.org/](https://castor-project.org/) </li>
-	<li> Pet Image Tools: [https://github.com/Recursion-Q19/pet\_image\_tools/tree/main/ImageJ](https://github.com/Recursion-Q19/pet_image_tools/tree/main/ImageJ) </li>
-	<li> Geant4: [https://github.com/Geant4/geant4](https://github.com/Geant4/geant4) </li>
-	<li> ImageJ: [https://github.com/imagej](https://github.com/imagej), [https://imagej.net/](https://imagej.net/), [https://imagej.net/ij/](https://imagej.net/ij/) </li>
+	<li> STIR: <a href="https://github.com/UCL/STIR">https://github.com/UCL/STIR</a> </li>
+	<li> CASToR: <a href="https://castor-project.org/">https://castor-project.org/</a> </li>
+	<li> Pet Image Tools: <a href="https://github.com/Recursion-Q19/pet\_image\_tools/tree/main/ImageJ">https://github.com/Recursion-Q19/pet_image_tools/tree/main/ImageJ</a> </li>
+	<li> Geant4: <a href="https://github.com/Geant4/geant4">https://github.com/Geant4/geant4</a> </li>
+	<li> ImageJ: <a href="https://github.com/imagej">https://github.com/imagej</a>, <a href="https://imagej.net/">https://imagej.net/</a>, <a href="https://imagej.net/ij/">https://imagej.net/ij/</a> </li>
 </ol>
 
 #### Installation
