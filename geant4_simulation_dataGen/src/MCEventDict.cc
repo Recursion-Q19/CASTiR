@@ -1,6 +1,6 @@
 // Do NOT change. Changes will be lost next time file is generated
 
-#define R__DICTIONARY_FILENAME dIhomedIsayyeddIDesktopdICASTiRdIgeant4_simulation_dataGendIsrcdIMCEventDict
+#define R__DICTIONARY_FILENAME dIhomedIsayyeddIDesktopdIGitHubdICASTiRdIgeant4_simulation_dataGendIsrcdIMCEventDict
 #define R__NO_DEPRECATION
 
 /*******************************************************************/
@@ -35,7 +35,7 @@
 #include "TDataMember.h"
 
 // Header files passed as explicit arguments
-#include "/home/sayyed/Desktop/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh"
+#include "/home/sayyed/Desktop/GitHub/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh"
 
 // Header files passed via #pragma extra_include
 
@@ -352,12 +352,12 @@ namespace ROOT {
 namespace {
   void TriggerDictionaryInitialization_MCEventDict_Impl() {
     static const char* headers[] = {
-"/home/sayyed/Desktop/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh",
+"/home/sayyed/Desktop/GitHub/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh",
 nullptr
     };
     static const char* includePaths[] = {
 "/usr/local/include/",
-"/home/sayyed/Desktop/CASTiR/geant4_simulation_dataGen/build/",
+"/home/sayyed/Desktop/GitHub/CASTiR/geant4_simulation_dataGen/build/",
 nullptr
     };
     static const char* fwdDeclCode = R"DICTFWDDCLS(
@@ -366,9 +366,9 @@ nullptr
 #pragma clang diagnostic ignored "-Wignored-attributes"
 #pragma clang diagnostic ignored "-Wreturn-type-c-linkage"
 extern int __Cling_AutoLoading_Map;
-class __attribute__((annotate("$clingAutoload$/home/sayyed/Desktop/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh")))  opticalHit;
-class __attribute__((annotate("$clingAutoload$/home/sayyed/Desktop/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh")))  EventPrimary;
-class __attribute__((annotate("$clingAutoload$/home/sayyed/Desktop/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh")))  MCEvent;
+class __attribute__((annotate("$clingAutoload$/home/sayyed/Desktop/GitHub/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh")))  opticalHit;
+class __attribute__((annotate("$clingAutoload$/home/sayyed/Desktop/GitHub/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh")))  EventPrimary;
+class __attribute__((annotate("$clingAutoload$/home/sayyed/Desktop/GitHub/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh")))  MCEvent;
 )DICTFWDDCLS";
     static const char* payloadCode = R"DICTPAYLOAD(
 #line 1 "MCEventDict dictionary payload"
@@ -376,7 +376,7 @@ class __attribute__((annotate("$clingAutoload$/home/sayyed/Desktop/CASTiR/geant4
 
 #define _BACKWARD_BACKWARD_WARNING_H
 // Inline headers
-#include "/home/sayyed/Desktop/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh"
+#include "/home/sayyed/Desktop/GitHub/CASTiR/geant4_simulation_dataGen/include/MCEvent.hh"
 
 #undef  _BACKWARD_BACKWARD_WARNING_H
 )DICTPAYLOAD";

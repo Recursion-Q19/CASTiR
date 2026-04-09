@@ -14,7 +14,7 @@ find_package(ROOT REQUIRED COMPONENTS RIO Net)
 #---Define useful ROOT functions and macros (e.g. ROOT_GENERATE_DICTIONARY)
 include(${ROOT_USE_FILE})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -std=c++14 -m64 -I/opt/ROOT/root_v6.12.06-MT-install/include")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -std=c++17 -m64 -I/opt/ROOT/root_v6.12.06-MT-install/include")
 #GEANT4 Version: 10.7
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available UI and Vis drivers by default

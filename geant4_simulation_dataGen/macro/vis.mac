@@ -7,6 +7,7 @@
 # (Edit the next line(s) to choose another graphics system) =#
 #============================================================#
 /vis/open OGL #600x600-0+0
+#/vis/open OGLIX
 #/vis/open OGLIQt 
 #/vis/open DAWN
 #/vis/open OGLSX #600x600-0+0

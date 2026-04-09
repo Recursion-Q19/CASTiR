@@ -118,10 +118,34 @@ DetectorConstruction::DetectorConstruction(G4double worldSize)
  
 DetectorConstruction::~DetectorConstruction()
 {
-	if(VisAttfCham!=0){delete VisAttfCham; VisAttfCham = 0;}
-	if(VisAttPhantom!=0) {delete VisAttPhantom; VisAttPhantom = 0;}
-	if(VisAttSensor!=0) {delete VisAttSensor; VisAttSensor = 0;}  
+	if(VisAttfCham !=0){delete VisAttfCham; VisAttfCham = 0;}
+	if(VisAttPhantom !=0) {delete VisAttPhantom; VisAttPhantom = 0;}
+	if(VisAttSensor !=0) {delete VisAttSensor; VisAttSensor = 0;} 
+	if(VisAttColdSubChamOuterPositive !=0) {delete VisAttColdSubChamOuterPositive; VisAttColdSubChamOuterPositive = 0;}
+	if(VisAttColdSubChamOuterNegative !=0) {delete VisAttColdSubChamOuterNegative; VisAttColdSubChamOuterNegative = 0;}
+	if(VisAttColdSubChamInnerPositive !=0) {delete VisAttColdSubChamInnerPositive; VisAttColdSubChamInnerPositive = 0;}
+	if(VisAttColdSubChamInnerNegative !=0) {delete VisAttColdSubChamInnerNegative; VisAttColdSubChamInnerNegative = 0;}
 	if(World_VisAtt!=0) {delete World_VisAtt; World_VisAtt = 0;}
+
+	if(coldSubChamberOuter != 0){delete coldSubChamberOuter; coldSubChamberOuter = 0;}
+	if(logicColdSubChamOuterPositive != 0){delete logicColdSubChamOuterPositive; logicColdSubChamOuterPositive = 0;}
+	if(physColdSubChamOuterPositive != 0){delete physColdSubChamOuterPositive; physColdSubChamOuterPositive = 0;}
+	
+	if(coldSubChamberInner != 0){delete coldSubChamberInner; coldSubChamberInner = 0;}
+	if(logicColdSubChamInnerPositive != 0){delete logicColdSubChamInnerPositive; logicColdSubChamInnerPositive = 0;}
+	if(physColdSubChamInnerPositive != 0){delete physColdSubChamInnerPositive; physColdSubChamInnerPositive = 0;}
+	
+	if(logicColdSubChamOuterNegative != 0){delete logicColdSubChamOuterNegative; logicColdSubChamOuterNegative = 0;}
+	if(physColdSubChamOuterNegative != 0){delete physColdSubChamOuterNegative; physColdSubChamOuterNegative = 0;}
+	if(logicColdSubChamInnerNegative != 0){delete logicColdSubChamInnerNegative; logicColdSubChamInnerNegative = 0;}
+	if(physColdSubChamInnerNegative != 0){delete physColdSubChamInnerNegative; physColdSubChamInnerNegative = 0;}
+		
+	for(G4int cn=0; cn<5; cn++)
+	{
+		if(fillableRod[cn] != 0){delete fillableRod[cn]; fillableRod[cn] = 0;}
+		if(logicRod[cn] != 0){delete logicRod[cn]; logicRod[cn] = 0;}
+		if(physRod[cn] != 0){delete physRod[cn]; physRod[cn] = 0;}
+	}
 
 	if(fillableChamber!=0){delete fillableChamber; fillableChamber = 0;}
 	if(logicfCham!=0){delete logicfCham; logicfCham = 0;}
@@ -134,11 +158,29 @@ DetectorConstruction::~DetectorConstruction()
 	if(phantom != 0){delete phantom; phantom = 0;}
 	if(logicPh != 0){delete logicPh; logicPh = 0;}
 	if(physPh != 0){delete logicPh; physPh = 0;}
-  
+	
+	if(shield_separator != 0) {delete shield_separator; shield_separator = 0;}
+	if(logicShield != 0) {delete logicShield; logicShield = 0;}
+	if(physiShield != 0) {delete physiShield; physiShield = 0;}
+	
+	if(solidCrystal != 0) {delete solidCrystal; solidCrystal = 0;}
+	if(logicCrystal != 0) {delete logicCrystal; logicCrystal = 0;}
+	for(G4int copyNo=0; copyNo<(numCrystals1D_x*numCrystals1D_z); copyNo++)
+		{	if(physiCrystal[copyNo] != 0) {delete physiCrystal[copyNo]; physiCrystal[copyNo] = 0;}}
+	
+	if(solidDet != 0) {delete solidDet; solidDet = 0;}
+	for(G4int copyNo=0; copyNo<numDetectorsPerRing; copyNo++)
+		{	
+			if(logicDet[copyNo] != 0) {delete logicDet[copyNo]; logicDet[copyNo] = 0;}
+			if(physiDet[copyNo] != 0) {delete physiDet[copyNo]; physiDet[copyNo] = 0;}
+		}
+
 	if(solidWorld!=0){delete solidWorld; solidWorld = 0;}
 	if(logicWorld!=0){delete logicWorld; logicWorld = 0;}
 	if(physiWorld!=0){delete physiWorld; physiWorld = 0;}
-
+	
+	if(LYSO!=0) {delete LYSO; LYSO =0;}
+	
 	if(stepLimit!=0){delete stepLimit; stepLimit =0;}
 }
 

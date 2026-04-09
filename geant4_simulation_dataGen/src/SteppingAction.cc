@@ -91,13 +91,13 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep)
 					cID1 = postStepPoint->GetTouchableHandle()->GetCopyNumber(0);
 					mID1 = postStepPoint->GetTouchableHandle()->GetCopyNumber(1);
 					dataManager->SetNewEventFlag(0); //0 means old event
-//G4cout << "Photon AAAAA" << G4endl;
+					//G4cout << "Photon AAAAA" << G4endl;
 					aTrack->SetTrackStatus(fStopAndKill);
 					name1=postStepPVname;
 				}else{
 					cID2 = postStepPoint->GetTouchableHandle()->GetCopyNumber(0);
 					mID2 = postStepPoint->GetTouchableHandle()->GetCopyNumber(1);
-//G4cout << "Photon BBBBB" << G4endl;
+					//G4cout << "Photon BBBBB" << G4endl;
 					aTrack->SetTrackStatus(fStopAndKill);
 					name2=postStepPVname;
 				}
@@ -109,7 +109,7 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep)
 					dataManager->SetNewEventFlag(true);
 					dataManager->WriteSTIRdata(cID1, mID1, cID2, mID2);
 					dataManager->WriteCASTORdata(cID1, mID1, cID2, mID2, time);
-//G4cout << "Writing WWWWWWWW" << G4endl;
+					//G4cout << "Writing WWWWWWWW" << G4endl;
 					cID1 = 0; mID1 = 1000; cID2=0; mID2=1000;
 				}
 				aTrack->SetTrackStatus(fStopAndKill);
