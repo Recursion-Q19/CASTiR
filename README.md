@@ -13,7 +13,7 @@ The project contains the following content.
 
 Our _GEANT4_ Simulation outputs two binary files with the same identical data in list-mode format, each of which is compatible for one of the software. For this project, the use of _GEANT4_ is to model the positron range as well as the energy spectra and scattering to obtain a more realistic simulation. Although we have simulated the scanner, phantom and record the hits, these things can be done through any other techniques. But *GEANT4* has given us a unified environment to do all together and help us to build on top for future projects, research and developments. You can learn more about it in the [README.md file](https://github.com/Recursion-Q19/CASTiR/blob/main/geant4_simulation_dataGen/README.md) for that directory. 
 
-- In this project we have used _GEANT4_ version 10.4.7
+- In this project we have used _GEANT4_ version 10.7.4
 
 ---
 
