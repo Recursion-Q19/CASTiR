@@ -5,6 +5,12 @@ For this study, we have used the following versions of the reconstruction softwa
 * _STIR_ version 3.2
 * _CASToR_ version 6.2
 
+We provide a preconfigured Ubuntu virtual machine (virt-manager compatible) with _GEANT4_, _ROOT_ (CERN), _STIR_, and _CASToR_ installed. The image of this virtual machine can be downloaded here -> [virtual_machine](https://zenodo.org/records/19558785?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6Ijc0YWFjZGQzLWU4ZDAtNDI0Yi04MWJlLTgyNjg4NGFjY2E1NSIsImRhdGEiOnt9LCJyYW5kb20iOiJhY2ZmOTgyNTExMzA5N2VlMzY1YTZhMDQ3YzEyYjVkNyJ9.rkFOM-VerGvFVYjUE5rIYftljNoEVIvj5iTGP8-cZQ2SrHYenAgIHeCt-xGNH36kWv1pxD3UMe0pLyGiX7pL5A). 
+The versions of all software and toolkits match those required to reproduce this study, except for ROOT, which is installed as the latest version available at the time the preconfigured virtual machine was created. Use the following credentional to log in to the machine:
+
+__*Username*__: researcher
+__*Password*__: passwdVM
+
 The project contains the following content.
 
 ---
