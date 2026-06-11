@@ -1,0 +1,6 @@
+Normalization Files:
+
+GEANT4 Simulation at: /home/sayyed/Desktop/Simulation-ConstructEachPartSeparately
+There are 15 subdiretories that I contain the histogram data for castor in build_trick1 to build_trick15. The rest of the files are just testing or earlier versions. (25 August 2025)
+
+A problem: my Particle gun is placed between 0 to 105.1 but it actually should be 105.7 - consult with Dr. Teymurazyan

@@ -1,0 +1,366 @@
+ 
+#include "DetectorConstruction.hh"
+
+#include "MCEvent.hh"
+#include "DataManager.hh"
+
+#include "G4Material.hh"
+#include "G4NistManager.hh"
+#include "G4Box.hh"
+#include "G4Tubs.hh"
+#include "G4LogicalVolume.hh"
+#include "G4PVPlacement.hh"
+#include "G4GeometryTolerance.hh"
+#include "G4GeometryManager.hh"
+#include "G4NistManager.hh"
+#include "G4UserLimits.hh"
+#include "G4VisAttributes.hh"
+#include "G4ios.hh"
+
+#include "G4SystemOfUnits.hh"
+#include "G4PhysicalConstants.hh"
+#include "G4LogicalVolumeStore.hh"
+#include "G4PhysicalVolumeStore.hh"
+
+#include <vector>
+#include <algorithm>
+
+#include <fstream>
+//#include <>
+// void myfunction (int i) {
+//   G4cout << i<<G4endl;
+// }
+
+//-----------------------------------------------------------------------------
+ 
+DetectorConstruction::DetectorConstruction(G4double worldSize)
+ 
+{
+  solidWorld =0;
+  logicWorld =0; 
+  physiWorld =0;
+  
+  solidPlastic = 0;
+  logicPlastic = 0;
+  physiPlastic = 0;   
+
+  // solidSensor = 0;
+  // logicSensor = 0;
+  // physiSensor = 0; 
+  
+
+  stepLimit = 0;
+
+  NISTManager         = G4NistManager::Instance();
+
+  World_VisAtt   = 0;
+  VisAttPlastic  = 0;
+  VisAttInerTube = 0;
+  VisAttSensor   = 0;  
+ 
+  fWorldLength        = worldSize;
+  //field size devided by (fiber_diameter+fiber_gap) has to be even number to obtain symetric arangement of fibers
+  field_size          = 40.455*cm;//10.44*cm;  //40.455*cm for 931 fibers per row; 
+                                   //4.35*cm for 101 fibers per row; 
+                                   //2.61*cm for 61 fibers per row; 
+                                   //2.61*mm for 7 fibers per row; 
+                                   //100.*cm;
+  plastic_x             = 1.0*cm;
+  plastic_y             = 1.0*cm;
+  plastic_z             = 1.0*cm;
+  // sensor_thickness    = 3.0*mm;
+  // r_min               = 0.0*cm;
+  // r_max               = 8.0*cm;
+  // phi_min             = 0.0*rad;
+  // phi_max             = twopi;
+  // half_height         = 10.0*cm;
+
+  MaxNumDetectors      = 96;
+  numDetectorsPerRing  = 2;//4;
+  numRings  = 1;
+  if(numRings*numDetectorsPerRing>MaxNumDetectors)
+    {
+      G4cerr<<__FILE__<<" : "<<__LINE__<<": number of detector modules cannot exceed 96"<<G4endl;
+      exit(-1);
+    }
+  numCrystals1D        = 35;
+
+  crystal_to_crystal_gap = 0.1*mm;
+
+  crystal_w            = 1.2*mm;
+  crystal_h            = 13.0*mm;
+  
+  det_w                = crystal_w*numCrystals1D + crystal_to_crystal_gap*(numCrystals1D +1);
+  det_h                = 13.1*mm;
+ 
+  ringRadius           = 91.*mm;//84.*mm;
+
+  //-----------------------------------------------------------------;
+  //DataManager* dataManager = DataManager::GetInstance();
+}
+
+//-----------------------------------------------------------------------------
+ 
+DetectorConstruction::~DetectorConstruction()
+{
+  // if(World_VisAtt!=0)  {delete World_VisAtt;   World_VisAtt   = 0;}
+  // if(VisAttWrapping!=0){delete VisAttWrapping; VisAttWrapping = 0;}
+  // if(VisAttScint!=0)   {delete VisAttScint;    VisAttScint    = 0;}
+  // if(VisAttSensor!=0)  {delete VisAttSensor;   VisAttSensor   = 0;}  
+
+  // if(solidWrapping!=0){delete solidWrapping; solidWrapping = 0;}
+  // if(logicWrapping!=0){delete logicWrapping; logicWrapping = 0;}
+  // if(physiWrapping!=0){delete physiWrapping; physiWrapping = 0;}
+
+  // if(solidScint!=0){delete solidScint; solidScint = 0;}
+  // if(logicScint!=0){delete logicScint; logicScint = 0;}
+  // if(physiScint!=0){delete physiScint; physiScint = 0;}
+
+  // if(solidSensor!=0){delete solidSensor; solidSensor = 0;}
+  // if(logicSensor!=0){delete logicSensor; logicSensor = 0;}
+  // if(physiSensor!=0){delete physiSensor; physiSensor = 0;}
+  
+  // if(solidWorld!=0){delete solidWorld; solidWorld = 0;}
+  // if(logicWorld!=0){delete logicWorld; logicWorld = 0;}
+  // if(physiWorld!=0){delete physiWorld; physiWorld = 0;}
+
+  if(stepLimit!=0){delete stepLimit; stepLimit =0;}
+}
+
+//-----------------------------------------------------------------------------
+ 
+G4VPhysicalVolume* DetectorConstruction::Construct()
+{  
+  //------------------------------
+  // Construct Materials
+  //------------------------------
+  ConstructMaterials();
+
+  //------------------------------ 
+  // World
+  //------------------------------ 
+  G4GeometryManager::GetInstance()->SetWorldMaximumExtent(fWorldLength);
+  G4cout << "Computed tolerance = "
+         << G4GeometryTolerance::GetInstance()->GetSurfaceTolerance()/mm
+         << " mm" << G4endl;
+
+  G4double HalfWorldLength = 0.5*fWorldLength;
+
+  solidWorld = new G4Box("sWorld",HalfWorldLength,HalfWorldLength,HalfWorldLength);
+  logicWorld = new G4LogicalVolume(solidWorld, NISTManager->FindOrBuildMaterial("G4_AIR"), "lWorld", 0, 0, 0);
+  
+  //  Must place the World Physical volume unrotated at (0,0,0).
+  physiWorld = new G4PVPlacement(0, G4ThreeVector(0.*mm,0.*mm,0.*mm), logicWorld, "pvWorld", 0, false, 0);   
+  //G4cout<<"world center position:  "<<physiWorld->GetObjectTranslation()<<G4endl; 
+
+
+  //--------------------- Sensor ----------------------------------
+  // solidSensor = new G4Tubs("sSensor", r_min, r_max+sensor_thickness, half_height, phi_min,phi_max);
+  // logicSensor = new G4LogicalVolume(solidSensor, NISTManager->FindOrBuildMaterial("G4_AIR"),"lSensor", 0, 0, 0);
+  // physiSensor = new G4PVPlacement(0, G4ThreeVector(0.*mm,0.*mm,0.*mm), 
+  // 				  logicSensor, "pvSensor", logicWorld, false, 0);
+
+  // solidInerTube = new G4Tubs("sInerTube", r_min, r_max, half_height, phi_min,phi_max);
+  // logicInerTube = new G4LogicalVolume(solidInerTube, NISTManager->FindOrBuildMaterial("G4_AIR"),"lInerTube", 0, 0, 0);
+  // physiInerTube = new G4PVPlacement(0, G4ThreeVector(0.*mm,0.*mm,0.*mm), logicInerTube, "pvInerTube", logicSensor, false, 0); 
+  
+  solidDet = new G4Box("sDet",det_w/2.,det_h/2.,det_w/2.);
+
+  G4double angular_shift = twopi/numDetectorsPerRing;
+
+  for(G4int cn=0; cn<numRings; cn++)
+    {
+      for(G4int copyNo=0; copyNo<numDetectorsPerRing; copyNo++)
+	{   
+	  G4String name = "lDet_";
+	  std::ostringstream tmp_str;
+	  tmp_str << copyNo;
+	  name+=tmp_str.str();
+	  
+	  logicDet[copyNo+cn*numDetectorsPerRing] = new G4LogicalVolume(solidDet, NISTManager->FindOrBuildMaterial("G4_TEFLON"), name, 0, 0, 0);
+	  // logicDet[copyNo] = new G4LogicalVolume(solidDet, NISTManager->FindOrBuildMaterial("G4_TEFLON"), name, 0, 0, 0);
+	  
+	  name = "det_";
+	  name+=tmp_str.str();
+	  
+	  G4ThreeVector pos = G4ThreeVector(0.*mm, ringRadius+crystal_h/2.-crystal_to_crystal_gap/2., (cn+0.5)*det_w);
+
+	  G4RotationMatrix rot;
+	  rot.rotateZ(-copyNo*angular_shift*rad);
+
+	  pos.rotateZ(-copyNo*angular_shift*rad);
+
+	  G4Transform3D TransformDet = G4Transform3D(rot, pos);
+	  //physiDet[copyNo] = new G4PVPlacement(TransformDet, logicDet[copyNo], name, logicWorld, false, copyNo);
+	  physiDet[copyNo+cn*numDetectorsPerRing] = new G4PVPlacement (TransformDet, logicDet[copyNo+cn*numDetectorsPerRing], name, logicWorld, false, copyNo+cn*numDetectorsPerRing);
+	}
+      }
+
+  solidCrystal = new G4Box("sCrystal", crystal_w/2., crystal_h/2., crystal_w/2.);
+  logicCrystal = new G4LogicalVolume(solidCrystal, NISTManager->FindOrBuildMaterial("LYSO"), "lCrystal", 0, 0, 0);
+
+  G4int numCrystals = numCrystals1D*numCrystals1D;
+
+  for(G4int rIndex=0; rIndex<numRings; rIndex++)
+    {
+      for(G4int cn=0; cn<numDetectorsPerRing; cn++)
+	{
+	  for(G4int copyNo=0; copyNo<numCrystals; copyNo++)
+	    {
+	      G4int i = copyNo/numCrystals1D;
+  	      G4int j = copyNo%numCrystals1D;
+	      G4double x = det_w/2. - (1.+i)*crystal_to_crystal_gap - (1/2. + i)*crystal_w;
+  	      G4double y = 0.5*(crystal_to_crystal_gap);
+  	      G4double z = -det_w/2. + (1.+j)*crystal_to_crystal_gap + (1/2. + j)*crystal_w;// + rIndex*det_w;
+  	      G4ThreeVector pos = G4ThreeVector(x, y, z);
+	      
+  	      // G4cout<<pos.x()/mm<<" : "<<pos.y()/mm<<" : "<<pos.z()/mm<<G4endl;
+
+  	      std::ostringstream tmp_str;
+  	      //tmp_str<<"pvCrystal_"<<copyNo+cn*numCrystals+rIndex*numDetectorsPerRing;
+	      tmp_str<<"pvCrystal_"<<(i+j*numDetectorsPerRing*numCrystals1D+cn*numCrystals1D);
+  	      G4String pv_name = tmp_str.str();
+  	  
+	      //physiCrystal[copyNo+cn*numCrystals+rIndex*numDetectorsPerRing] = new G4PVPlacement(0, pos, logicCrystal, pv_name, logicDet[cn+rIndex*numDetectorsPerRing], false, copyNo, false);
+
+	      physiCrystal[i+j*numDetectorsPerRing*numCrystals1D+cn*numCrystals1D] = new G4PVPlacement(0, pos, logicCrystal, pv_name, logicDet[cn+rIndex*numDetectorsPerRing], false, copyNo, false);
+	      //G4cout<<"copyNo = "<<copyNo<<": castorID = "<<(i+j*numDetectorsPerRing*numCrystals1D+cn*numCrystals1D)<<G4endl;
+  	    }
+  	}
+    }
+   WriteCASTOR_LUT();
+  
+  //Start building the detector
+  //------------------------------------------------------------------
+  //------------------------------------------------------------------
+  solidPlastic = new G4Box("sPlastic",plastic_x/2.,plastic_y/2.,plastic_z/2.);
+  logicPlastic = new G4LogicalVolume(solidPlastic, NISTManager->FindOrBuildMaterial("G4_POLYSTYRENE"), "lScint", 0, 0, 0);
+  G4ThreeVector source_pos = G4ThreeVector(0.*mm,0.*mm,det_w/2.);
+  physiPlastic = new G4PVPlacement(0, source_pos, logicPlastic, "pvPlastic", logicWorld, false, 0);   
+  
+  //--------- Visualization attributes -------------------------------
+
+  VisualizationAttributes();
+
+  //--------- example of User Limits -------------------------------
+
+  // below is an example of how to set tracking constraints in a given
+  // logical volume(see also in PhysicsList how to setup the processes
+  // G4StepLimiter or G4UserSpecialCuts).
+    
+  // Sets a max Step length in the tracker region, with G4StepLimiter
+  //
+  // G4double maxStep = 0.5*cm;
+  // stepLimit = new G4UserLimits(maxStep);
+  // logicWorld->SetUserLimits(stepLimit);
+  
+  // Set additional contraints on the track, with G4UserSpecialCuts
+  //
+  // G4double maxLength = 2*fTrackerLength, maxTime = 0.1*ns, minEkin = 10*MeV;
+  // logicTracker->SetUserLimits(new G4UserLimits(maxStep,maxLength,maxTime,
+  //                                               minEkin));
+  
+  return physiWorld;
+}
+ 
+//======================================================================
+void DetectorConstruction::ConstructMaterials()
+{
+  NISTManager=G4NistManager::Instance();
+  G4Material* LYSO = new G4Material("LYSO", 7.2*g/cm3, 5, kStateSolid);
+  LYSO->AddElement(NISTManager->FindOrBuildElement("Lu"), 71.43*perCent);
+  LYSO->AddElement(NISTManager->FindOrBuildElement("Y"), 4.03*perCent);
+  LYSO->AddElement(NISTManager->FindOrBuildElement("Si"), 6.37*perCent);
+  LYSO->AddElement(NISTManager->FindOrBuildElement("O"), 18.14*perCent);
+  LYSO->AddElement(NISTManager->FindOrBuildElement("Ce"), 0.02*perCent); // cooke2000
+
+}
+
+//======================================================================
+
+void DetectorConstruction::VisualizationAttributes()
+{
+  World_VisAtt = new G4VisAttributes();
+  World_VisAtt->SetForceWireframe(true);  
+  // logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
+  logicWorld->SetVisAttributes(World_VisAtt);
+
+  VisAttSensor = new G4VisAttributes(true, G4Colour(0.5, 0.5, 0.5, 0.4));
+  VisAttSensor->SetForceWireframe(true);
+  // logicSensor->SetVisAttributes(VisAttSensor);
+  for(G4int rIndex=0; rIndex<numRings; rIndex++)
+    {
+      for(G4int copyNo=0; copyNo<numDetectorsPerRing; copyNo++)
+	{  
+	  logicDet[copyNo+rIndex*numDetectorsPerRing]->SetVisAttributes(VisAttSensor);
+		  //	  logicDet[copyNo]->SetVisAttributes(VisAttSensor);
+	}
+    }
+  // VisAttInerTube = new G4VisAttributes(true, G4Colour::Blue());
+  // VisAttInerTube->SetForceWireframe(true);
+  // logicInerTube->SetVisAttributes(VisAttInerTube);
+
+  VisAttPlastic = new G4VisAttributes(true, G4Colour::Grey());  
+  VisAttPlastic->SetForceWireframe(true);  
+  logicPlastic->SetVisAttributes(VisAttPlastic);
+}
+
+
+void DetectorConstruction::WriteCASTOR_LUT()
+{
+  G4double  angular_shift = twopi/numDetectorsPerRing;
+  G4int     numCrystals = numCrystals1D*numCrystals1D;
+  
+  std::fstream lut_table;
+  lut_table.open("PET_URNIDDL_PHYTOPET.lut", std::ios::out | std::ios::binary);
+
+  for(G4int rIndex=0; rIndex<numRings; rIndex++)
+    {
+      for(G4int j=0; j<numCrystals1D; j++)
+	{
+	  for(G4int cn=0; cn<numDetectorsPerRing; cn++)
+	    { 
+	      for(G4int i=0; i<numCrystals1D; i++)
+		{
+		  G4double x = det_w/2. - (1.+i)*crystal_to_crystal_gap - (1/2. + i)*crystal_w;
+		  G4double y = 0.5*(crystal_to_crystal_gap);
+		  G4double z = -det_w/2. + (1.+j)*crystal_to_crystal_gap + (1/2. + j)*crystal_w + rIndex*det_w;
+		  G4ThreeVector pos = G4ThreeVector(x, y, z);
+	  
+		  std::ostringstream tmp_str;
+		  tmp_str<<"pvCrystal_"<<i+j*numDetectorsPerRing*numCrystals1D+cn*numCrystals1D;
+
+		  G4String pv_name = tmp_str.str();
+  	  
+		  G4ThreeVector pos_det = G4ThreeVector(0.*mm, ringRadius+crystal_h/2.-crystal_to_crystal_gap/2., 0.*mm) + pos;
+		  pos_det.rotateZ(cn*angular_shift);
+	  
+		  G4ThreeVector vect(0, 1, 0);
+		  vect.rotateZ(cn*angular_shift*rad);
+	  
+		  // G4cout<<pv_name<<" "<<cn<<" "<<i<<" "<<j<<" "
+		  // 	<<float(pos_det.x()/mm)<<" "
+		  // 	<<float(pos_det.y()/mm)<<" "
+		  // 	<<float(pos_det.z()/mm)<<" "
+		  // 	<<float(vect.x())<<" "
+		  // 	<<float(vect.y())<<" "
+		  // 	<<float(vect.z())<<G4endl;
+	      
+		  float tmp = float(pos_det.x()/mm);
+		  lut_table.write((char *)&tmp, sizeof(float));
+		  tmp = float(pos_det.y()/mm);
+		  lut_table.write((char *)&tmp, sizeof(float));
+		  tmp = float(pos_det.z()/mm);
+		  lut_table.write((char *)&tmp, sizeof(float));
+		  tmp = float(vect.x());
+		  lut_table.write((char *)&tmp, sizeof(float));
+		  tmp = float(vect.y());
+		  lut_table.write((char *)&tmp, sizeof(float));
+		  tmp = float(vect.z());
+		  lut_table.write((char *)&tmp, sizeof(float));	 
+		}
+	    }
+	}
+    }
+  lut_table.close();
+}

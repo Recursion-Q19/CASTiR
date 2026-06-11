@@ -1,0 +1,14 @@
+/run/verbose 0
+/process/verbose 0
+/physic/addPhysics standard_opt4
+/physic/addPhysics optical_physics
+/process/eLoss/binsDEDX 480
+/process/eLoss/binsLambda 480
+/run/initialize
+/physic/setGCut 4.5 mm
+/physic/setPCut 0.16 mm
+/physic/setECut 0.16 mm
+/primaryGenerator/setFixedEnergyFlag True
+/primaryGenerator/setEnergy 0.0 keV
+/userRun/setOutFileName ./test.root
+/run/beamOn 10

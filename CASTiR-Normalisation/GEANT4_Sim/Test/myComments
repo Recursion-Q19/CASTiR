@@ -1,0 +1,36 @@
+#In detector construction:
+
+	Detector axial direction: Z
+	Crystal organization in a detector block: Filling in the Z direction Z then X
+	In Data Manager, in DataManager::WriteCASTORdata, it shoud be    unsigned int numDetectorsPerRing = 8;
+#some variables (Detector Construction):
+	numDetectorsPerRing = 8;
+  	numRings = 2;
+	numCrystals1D = 35;
+
+	crystal_to_crystal_gap = 0.1*mm;
+
+	crystal_w = 1.2*mm;
+	crystal_h = 13.0*mm;
+  
+	det_w = crystal_w*numCrystals1D + crystal_to_crystal_gap*(numCrystals1D +1);
+	det_h = 13.1*mm;
+ 
+	ringRadius           = 91.*mm;
+
+#Calculation
+	#Detector Construction:
+
+	i+j*numDetectorsPerRing*numCrystals1D+cn*numCrystals1D
+
+	#data Manager:
+
+	unsigned int i = crystalID1/numCrystals1D;
+	unsigned int j = crystalID1%numCrystals1D;
+	unsigned int castorID1 = i+j*numDetectorsPerRing*numCrystals1D+moduleID1*numCrystals1D;
+
+	i = crystalID2/numCrystals1D;
+	j = crystalID2%numCrystals1D;
+	unsigned int castorID2 = i+j*numDetectorsPerRing*numCrystals1D+moduleID2*numCrystals1D;
+
+	

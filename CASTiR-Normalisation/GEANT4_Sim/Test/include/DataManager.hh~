@@ -1,0 +1,81 @@
+#ifndef DataManager_h
+#define DataManager_h 1
+
+#include "globals.hh"
+#include "MCEvent.hh"
+#include <fstream>
+
+class TTree;
+class TFile;
+
+class DataManager //a singleton class
+{
+public:
+    static DataManager* GetInstance();
+
+private:
+  DataManager():fFile(NULL), fFileName(0), fEventTree(NULL), fEvent(NULL) {}
+  DataManager(DataManager const& );             //not defined, not copyable
+  DataManager& operator= (DataManager const& ); //not defined, not assignable
+  ~DataManager();
+
+private:
+  TFile*       fFile; 
+  TString      fFileName;
+  TTree*       fEventTree;
+  // static Int_t CerenTrackID;
+  // static Int_t ScintTrackID;
+  static Int_t TrackID;
+  static bool new_event;
+
+  MCEvent*     fEvent;
+
+  std::fstream fCASTORfile;
+
+public:
+  void open(Int_t RN);
+  void open(const char* name);
+
+  void close();
+  void SetFileName(TString name)      { fFileName=name; }
+
+  void CleanUpEvent() { 
+    if(fEvent) fEvent->Clear("C"); 
+    // CerenTrackID =-1;
+    // ScintTrackID =-1;
+    TrackID =-1;
+    new_event = true;
+  }
+
+  // void SetCerenkovTrackID(const Int_t &id) {CerenTrackID = id;}
+  // void SetScintTrackID(const Int_t &id)    {ScintTrackID = id;}
+  void SetTrackID(const Int_t &id)  {TrackID = id;}
+  void SetNewEventFlag(bool flag) {new_event = flag;}
+  bool GetNewEventFlag() {return new_event;};
+  
+  void SetEventName(TString name) { fEvent->SetEventName(name); }
+  void SetEventNumber(Int_t numb) { fEvent->SetEventNumber(numb);}
+
+  void AddPrimary(EventPrimary* primary); 
+  void AddOptTransmitted(opticalHit *hitPtr);   
+
+  void SetEvent(MCEvent* ev) { fEvent = ev; }
+
+  Int_t GetTrackID()   {return TrackID;}
+
+  void FillEvent();
+//  protected:
+  MCEvent* GetEvent() { return fEvent; }
+  void WriteCASTORdata(unsigned int crystalID1, unsigned int moduleID1, unsigned int crystalID2, unsigned int moduleID2, unsigned long int time);
+};
+
+namespace
+{ struct ForceSingletonInitialization
+  { ForceSingletonInitialization() { DataManager::GetInstance(); } } GetInstance;
+}
+
+#endif
+
+
+
+

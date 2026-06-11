@@ -1,0 +1,33 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  )
+
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/sayyed/Desktop/Test/OldVersion/phytoPETsim.cc" "CMakeFiles/phytoPETsim.dir/phytoPETsim.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/phytoPETsim.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/DataManager.cc" "CMakeFiles/phytoPETsim.dir/src/DataManager.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/DataManager.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/DetectorConstruction.cc" "CMakeFiles/phytoPETsim.dir/src/DetectorConstruction.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/DetectorConstruction.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/EventAction.cc" "CMakeFiles/phytoPETsim.dir/src/EventAction.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/EventAction.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/MCEvent.cc" "CMakeFiles/phytoPETsim.dir/src/MCEvent.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/MCEvent.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/MCEventDict.cc" "CMakeFiles/phytoPETsim.dir/src/MCEventDict.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/MCEventDict.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/PhysicsList.cc" "CMakeFiles/phytoPETsim.dir/src/PhysicsList.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/PhysicsList.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/PhysicsListMessenger.cc" "CMakeFiles/phytoPETsim.dir/src/PhysicsListMessenger.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/PhysicsListMessenger.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/PrimaryGeneratorAction.cc" "CMakeFiles/phytoPETsim.dir/src/PrimaryGeneratorAction.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/PrimaryGeneratorAction.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/PrimaryGeneratorMessenger.cc" "CMakeFiles/phytoPETsim.dir/src/PrimaryGeneratorMessenger.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/PrimaryGeneratorMessenger.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/RunAction.cc" "CMakeFiles/phytoPETsim.dir/src/RunAction.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/RunAction.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/RunActionMessenger.cc" "CMakeFiles/phytoPETsim.dir/src/RunActionMessenger.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/RunActionMessenger.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/StepMax.cc" "CMakeFiles/phytoPETsim.dir/src/StepMax.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/StepMax.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/StepMaxMessenger.cc" "CMakeFiles/phytoPETsim.dir/src/StepMaxMessenger.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/StepMaxMessenger.cc.o.d"
+  "/home/sayyed/Desktop/Test/OldVersion/src/SteppingAction.cc" "CMakeFiles/phytoPETsim.dir/src/SteppingAction.cc.o" "gcc" "CMakeFiles/phytoPETsim.dir/src/SteppingAction.cc.o.d"
+  )
+
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

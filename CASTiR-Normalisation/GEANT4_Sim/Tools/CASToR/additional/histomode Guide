@@ -1,0 +1,69 @@
+/*
+*I have used GEANT4 to generate data, and this implementation is for my setup. 
+*You might need to adjust it based on your setup or simulation method.
+*/
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////dataManager.hh//////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+		std::map<std::set<uint16_t>, uint16_t> histmode; // You can declare it as: std::map<std::set<unsigned int>, float> histmode;
+								// however, I did want to use less memory
+		
+		void hist_map(unsigned int crystalID1, unsigned int moduleID1, unsigned int crystalID2, unsigned int moduleID2);
+		void WriteCASToRdataHist(unsigned long int time);
+		
+		
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////dataManager.cc//////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+	void DataManager::hist_map(unsigned int crystalID1, unsigned int moduleID1, unsigned int crystalID2, unsigned int moduleID2)
+	{  
+		/*
+			Here some calculation based on you detector geometry to find the following values
+		*/
+			
+		uint16_t castorID1 = //calculation and/or initialization;
+		uint16_t castorID2 = //calculation and/or initialization;
+		
+		histmode[{castorID1,castorID2}] = histmode[{castorID1,castorID2}] + 1;
+
+	}
+
+
+//-----------------------------------------------------------------------------
+
+	void DataManager::WriteCASToRdataHist(unsigned long int time)
+	{ 
+		double temp = time/1000000.;
+	  	temp *=4;
+	  	unsigned int t = temp;
+	
+
+		for(std::map<std::set<uint16_t>, uint16_t>::iterator it_map = histmode.begin(); it_map != histmode.end(); it_map++){
+
+			fCASTORfile.write((char *)&t, sizeof(unsigned int));
+			
+			float counts_line = static_cast<float>(it_map->second);
+			fCASTORfile.write((char *)&counts_line, sizeof(float));
+
+			for(std::set<uint16_t>::iterator it_set=(it_map->first).begin(); it_set != (it_map->first).end(); it_set++){
+				unsigned int crystalID = static_cast<unsigned int>(*it_set);
+				fCASTORfile.write((char *)&crystalID, sizeof(unsigned int));
+			}
+		}
+
+
+
+	}
+	
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////runAction.cc////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+	unsigned long int time = 25;
+	dataManager->WriteCASToRdataHist(time);
+	
+	std::cout << "Number of events (in CASToR header file (.cdh file)): " << (dataManager->histmode).size() << std::endl;
+

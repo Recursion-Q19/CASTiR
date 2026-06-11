@@ -1,0 +1,8 @@
+/home/sayyed/Desktop/Normalization-CASTiR/Test/build/CMakeFiles/phytoPETsim.dir
+/home/sayyed/Desktop/Normalization-CASTiR/Test/build/CMakeFiles/phytoPET_sim.dir
+/home/sayyed/Desktop/Normalization-CASTiR/Test/build/CMakeFiles/edit_cache.dir
+/home/sayyed/Desktop/Normalization-CASTiR/Test/build/CMakeFiles/rebuild_cache.dir
+/home/sayyed/Desktop/Normalization-CASTiR/Test/build/CMakeFiles/list_install_components.dir
+/home/sayyed/Desktop/Normalization-CASTiR/Test/build/CMakeFiles/install.dir
+/home/sayyed/Desktop/Normalization-CASTiR/Test/build/CMakeFiles/install/local.dir
+/home/sayyed/Desktop/Normalization-CASTiR/Test/build/CMakeFiles/install/strip.dir

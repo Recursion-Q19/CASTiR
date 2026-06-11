@@ -1,0 +1,8 @@
+/home/sayyed/Desktop/Test/OldVersion/build/CMakeFiles/phytoPETsim.dir
+/home/sayyed/Desktop/Test/OldVersion/build/CMakeFiles/phytoPET_sim.dir
+/home/sayyed/Desktop/Test/OldVersion/build/CMakeFiles/edit_cache.dir
+/home/sayyed/Desktop/Test/OldVersion/build/CMakeFiles/rebuild_cache.dir
+/home/sayyed/Desktop/Test/OldVersion/build/CMakeFiles/list_install_components.dir
+/home/sayyed/Desktop/Test/OldVersion/build/CMakeFiles/install.dir
+/home/sayyed/Desktop/Test/OldVersion/build/CMakeFiles/install/local.dir
+/home/sayyed/Desktop/Test/OldVersion/build/CMakeFiles/install/strip.dir
